@@ -1,5 +1,5 @@
 // Add your code here
-
+const body = document.querySelector("body")
 
 function submitData(userName, userEmail){
     const configurationObject = {
@@ -18,11 +18,19 @@ function submitData(userName, userEmail){
         return response.json();
       })
       .then(data => {
-
-      }
+        const newId = data.id;
+        const p = document.createElement('p');
+        const newContent = document.createTextNode(newId);
+        p.appendChild(newContent);
+        document.body.appendChild(p);
+      })
       .catch(function(error){
-        alert(error.message)
-        console.log(error.message)
+        const err = error.message;
+        const para = document.createElement('p');
+        const newErrMessage = document.createTextNode(error.message);
+        para.appendChild(newErrMessage);
+        document.body.appendChild(para);
+
     })
 }
     
